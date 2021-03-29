@@ -22,13 +22,19 @@ const Navbar = ({ open, toggleMenu, isThemeToggled, toggleTheme }) => {
         </MobileIcon>
         <NavMenu>
           <NavItem>
-            <NavLink to='/history'>History</NavLink>
+            <NavLink activeClassName='active' to='/history'>
+              History
+            </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink to='/launches'>launches</NavLink>
+            <NavLink activeClassName='active' to='/launches'>
+              launches
+            </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink to='/rockets'>Rockets</NavLink>
+            <NavLink activeClassName='active' to='/rockets'>
+              Rockets
+            </NavLink>
           </NavItem>
         </NavMenu>
         <NavBtn>

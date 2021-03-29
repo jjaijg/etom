@@ -32,7 +32,22 @@ export const GlobalStyles = createGlobalStyle`
   a {
     color: ${({ theme }) => theme.colors.text.link};
     cursor: pointer;
+    text-decoration: none;
   }
+
+   a.btn {
+     border: 0;
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 14px;
+    border-radius: 4px;
+    margin-top: 5px;
+    cursor: pointer;
+    background-color: ${({ theme }) => theme.colors.bgColor};
+    color: ${({ theme }) => theme.colors.secondaryColor};
+    opacity: 0.7;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+   }
 
   button {
     border: 0;
@@ -48,7 +63,9 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   button.btn {
-    background-color: ${({ theme }) => theme.colors.primaryColor};
-    color: ${({ theme }) => theme.colors.text.primary};
+    background-color: ${({ theme }) => theme.colors.bgColor};
+    color: ${({ theme }) => theme.colors.secondaryColor};
+    opacity: 0.7;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   }
 `;

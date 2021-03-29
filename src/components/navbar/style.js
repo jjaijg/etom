@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import { Link } from 'react-router-dom';
+import { NavLink as NavLinkR, Link } from 'react-router-dom';
 import { setDisplay } from '../../styles/baseStyles';
 
 export const Nav = styled.nav`
@@ -67,7 +67,7 @@ export const NavItem = styled.li`
   height: 80px;
 `;
 
-export const NavLink = styled(Link)`
+export const NavLink = styled(NavLinkR)`
   color: ${({ theme }) => theme.colors.bgColor};
   display: flex;
   align-items: center;
@@ -76,7 +76,7 @@ export const NavLink = styled(Link)`
   height: 100%;
   cursor: pointer;
 
-  &:hover {
+  &.active {
     border-bottom: 3px solid ${({ theme }) => theme.colors.bgColor};
   }
 `;

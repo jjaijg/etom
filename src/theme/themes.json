@@ -4,7 +4,7 @@
       "id": "T_001",
       "name": "Earth",
       "colors": {
-        "primaryColor": "#0A1128",
+        "primaryColor": "#FEFCFB",
         "secondaryColor": "#001F54",
         "accentColor": "#034078",
         "bgColor": "#FEFCFB",
@@ -15,7 +15,7 @@
           "danger": "#B00020"
         },
         "text": {
-          "primary": "#0A1128",
+          "primary": "#FEFCFB",
           "secondary": "#0A1128",
           "link": "#0A1128"
         }

@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
+import { Switch, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import WebFont from 'webfontloader';
 import Navbar from './components/navbar';
@@ -6,7 +7,8 @@ import SideNav from './components/sidenav';
 import { Container } from './styles/baseStyles';
 import { GlobalStyles } from './theme/GlobalStyles';
 import useTheme from './theme/useTheme';
-
+// import HistoryPage1 from './pages/history';
+const HistoryPage = lazy(() => import('./pages/history'));
 function App() {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [toggleTheme, setToggleTheme] = useState(true);
@@ -42,25 +44,32 @@ function App() {
   return (
     <>
       {themeLoaded && (
-        <ThemeProvider theme={selectedTheme}>
-          <GlobalStyles />
-          <Navbar
-            open={isMenuOpen}
-            toggleMenu={handleMenuOpenState}
-            isThemeToggled={toggleTheme}
-            toggleTheme={handleToggleTheme}
-          />
-          <SideNav open={isMenuOpen} />
-          <Container
-            style={{ fontFamily: selectedTheme.font, marginTop: '60px' }}
-          >
-            <h1>Theme Builder</h1>
-            <p>
-              This is a theming system with a Theme Switcher and Theme Builder.
-              Do you want to see the source code?
-            </p>
-          </Container>
-        </ThemeProvider>
+        <Suspense fallback={<p>Loading...</p>}>
+          <ThemeProvider theme={selectedTheme}>
+            <GlobalStyles />
+            <Navbar
+              open={isMenuOpen}
+              toggleMenu={handleMenuOpenState}
+              isThemeToggled={toggleTheme}
+              toggleTheme={handleToggleTheme}
+            />
+            <SideNav open={isMenuOpen} />
+            <Container
+              style={{ fontFamily: selectedTheme.font, marginTop: '80px' }}
+            >
+              <Switch>
+                <Route path='/history' component={HistoryPage} />
+                <Route path='/' exact>
+                  <h1>Theme Builder</h1>
+                  <p>
+                    This is a theming system with a Theme Switcher and Theme
+                    Builder. Do you want to see the source code?
+                  </p>
+                </Route>
+              </Switch>
+            </Container>
+          </ThemeProvider>
+        </Suspense>
       )}
     </>
   );
