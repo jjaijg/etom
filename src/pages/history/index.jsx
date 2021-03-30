@@ -1,14 +1,19 @@
 // import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 import TimeLine from '../../components/timeline';
+import IsLoadingHOC from '../../hoc/IsLoadingHOC';
 import useHistory from '../../hooks/useHistory';
 import { Main } from './style';
 
-const HistoryPage = (props) => {
+const HistoryPage = ({ setLoading }) => {
   const [data, isLoading, error] = useHistory({ key: 'history' });
+
+  useEffect(() => {
+    setLoading(isLoading);
+  }, [isLoading, setLoading]);
 
   return (
     <Main>
-      {isLoading && <p>Loading timeline...</p>}
       <TimeLine data={data} />
     </Main>
   );
@@ -16,4 +21,4 @@ const HistoryPage = (props) => {
 
 // HistoryPage.propTypes = {};
 
-export default HistoryPage;
+export default IsLoadingHOC(HistoryPage);

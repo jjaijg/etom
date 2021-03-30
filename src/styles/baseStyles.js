@@ -23,4 +23,5 @@ export const setDisplay = (
 export const Container = styled.div`
   margin: 5px auto 5px auto;
   padding: 5px;
+  color: ${({ theme }) => theme.colors1.text};
 `;
